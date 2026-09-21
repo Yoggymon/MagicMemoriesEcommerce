@@ -1,0 +1,372 @@
+---
+// src/components/CartModal.astro
+---
+
+<!-- Cart Drawer / Modal -->
+<div id="cart-modal" class="fixed inset-0 z-50 hidden transition-opacity duration-300">
+  <!-- Backdrop -->
+  <div id="cart-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"></div>
+
+  <!-- Slide-over Drawer -->
+  <div class="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+    <div class="w-screen max-w-md bg-white border-l border-[#E5E7EB] shadow-2xl flex flex-col justify-between">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 sm:p-6 border-b border-[#E5E7EB] flex items-center justify-between bg-[#FAFAFA]">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#059669]"></span>
+          <h3 class="font-serif text-xl font-bold text-[#0F172A]">Bolsa de Compras</h3>
+          <span id="cart-item-count-badge" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#B8860B] text-white">
+            1
+          </span>
+        </div>
+        <button
+          id="cart-close-btn"
+          type="button"
+          class="p-2 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+          aria-label="Cerrar bolsa"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Free shipping progress banner -->
+      <div class="bg-[#FBF7EE] border-b border-[#E8D7A8] px-5 py-2.5 text-xs text-[#0F172A] flex items-center justify-center gap-1.5 font-medium">
+        <span>🚚</span>
+        <span>¡Tenés <strong>Envío Gratis</strong> y <strong>Pago Contra Entrega</strong> activados!</span>
+      </div>
+
+      <!-- Drawer Body: Items + Customer Form (Scrollable) -->
+      <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
+        
+        <!-- Cart Items List -->
+        <div>
+          <div class="text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-3">
+            Artículos seleccionados:
+          </div>
+          
+          <div id="cart-items-container" class="space-y-3">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Checkout Form for WhatsApp -->
+        <div class="pt-5 border-t border-[#E5E7EB] space-y-3.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-[#0F172A] uppercase tracking-wider">
+              Datos para la entrega:
+            </span>
+            <span class="text-[11px] text-[#059669] font-semibold">Pagas al recibir</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-[#475569] mb-1">Nombre y Apellido *</label>
+            <input
+              id="checkout-name"
+              type="text"
+              required
+              placeholder="Ej. Camila Morales"
+              class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-[#475569] mb-1">Celular / WhatsApp *</label>
+            <input
+              id="checkout-phone"
+              type="tel"
+              required
+              placeholder="Ej. 987 654 321"
+              class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+            />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#475569] mb-1">Ciudad / Región *</label>
+              <input
+                id="checkout-city"
+                type="text"
+                required
+                placeholder="Ej. Lima"
+                class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#475569] mb-1">Dirección Exacta *</label>
+              <input
+                id="checkout-address"
+                type="text"
+                required
+                placeholder="Calle, Nro, Dpto"
+                class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-[11px] text-[#64748B] leading-relaxed">
+            📦 El repartidor llevará tu paquete y podrás revisarlo antes de pagar en efectivo o transferencia.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer: Summary & WhatsApp Submit -->
+      <div class="p-5 sm:p-6 border-t border-[#E5E7EB] bg-white space-y-3.5">
+        
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-[#64748B]">
+            <span>Envío a domicilio:</span>
+            <span class="text-[#059669] font-bold">GRATIS</span>
+          </div>
+          <div class="flex justify-between text-base font-bold text-[#0F172A] pt-2 border-t border-[#E5E7EB]">
+            <span>Total a pagar:</span>
+            <span id="cart-total-price" class="font-serif text-xl font-extrabold text-[#0F172A]">
+              S/. 129.00
+            </span>
+          </div>
+        </div>
+
+        <!-- WhatsApp Checkout Action -->
+        <button
+          id="cart-submit-whatsapp"
+          type="button"
+          class="w-full py-3.5 px-5 rounded-xl font-bold text-sm sm:text-base text-white bg-[#059669] hover:bg-[#047857] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+        >
+          <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          <span>CULMINAR COMPRA POR WHATSAPP</span>
+        </button>
+
+        <p class="text-[10px] text-center text-[#94A3B8]">
+          Se abrirá WhatsApp con el resumen de tu pedido para coordinar el envío.
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  interface CartItem {
+    id: string;
+    name: string;
+    price: number;
+    qty: number;
+    image: string;
+  }
+
+  // Initial cart state
+  let cart: CartItem[] = [
+    {
+      id: "prod-1",
+      name: "Maletín Rose Gold con Espejo LED",
+      price: 129,
+      qty: 1,
+      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
+    }
+  ];
+
+  function getCartTotal(): number {
+    return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }
+
+  function getCartCount(): number {
+    return cart.reduce((sum, item) => sum + item.qty, 0);
+  }
+
+  function renderCart() {
+    const container = document.getElementById('cart-items-container');
+    const badge = document.getElementById('cart-item-count-badge');
+    const navBadges = document.querySelectorAll('.nav-cart-count');
+    const totalPriceEl = document.getElementById('cart-total-price');
+
+    const count = getCartCount();
+    const total = getCartTotal();
+
+    if (badge) badge.textContent = count.toString();
+    navBadges.forEach(b => b.textContent = count.toString());
+    if (totalPriceEl) totalPriceEl.textContent = `S/. ${total.toFixed(2)}`;
+
+    if (!container) return;
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="py-8 text-center text-[#64748B] text-xs">
+          Tu bolsa está vacía. Elegí un producto para continuar.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = cart.map((item) => `
+      <div class="p-3 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-between gap-3 shadow-xs">
+        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover border border-[#E5E7EB] shrink-0" />
+        
+        <div class="flex-1 min-w-0">
+          <h4 class="font-serif text-xs font-bold text-[#0F172A] truncate leading-tight">${item.name}</h4>
+          <span class="text-xs font-bold text-[#059669] block mt-0.5">S/. ${item.price.toFixed(2)}</span>
+        </div>
+
+        <div class="flex items-center gap-1.5 border border-[#CBD5E1] rounded-lg bg-white px-1.5 py-0.5 shrink-0">
+          <button type="button" class="cart-minus px-1 text-xs font-bold text-[#64748B] hover:text-[#0F172A]" data-id="${item.id}">-</button>
+          <span class="text-xs font-bold px-1 text-[#0F172A]">${item.qty}</span>
+          <button type="button" class="cart-plus px-1 text-xs font-bold text-[#64748B] hover:text-[#0F172A]" data-id="${item.id}">+</button>
+        </div>
+
+        <button type="button" class="cart-remove text-[#94A3B8] hover:text-red-500 p-1 text-xs" data-id="${item.id}" title="Eliminar">
+          ✕
+        </button>
+      </div>
+    `).join('');
+
+    // Attach item events
+    container.querySelectorAll('.cart-minus').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const itm = cart.find(i => i.id === id);
+        if (itm) {
+          if (itm.qty > 1) itm.qty--;
+          else cart = cart.filter(i => i.id !== id);
+          renderCart();
+        }
+      });
+    });
+
+    container.querySelectorAll('.cart-plus').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const itm = cart.find(i => i.id === id);
+        if (itm) {
+          itm.qty++;
+          renderCart();
+        }
+      });
+    });
+
+    container.querySelectorAll('.cart-remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        cart = cart.filter(i => i.id !== id);
+        renderCart();
+      });
+    });
+  }
+
+  function openCartModal() {
+    const modal = document.getElementById('cart-modal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      renderCart();
+    }
+  }
+
+  function closeCartModal() {
+    const modal = document.getElementById('cart-modal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function setupCartModalEvents() {
+    const closeBtn = document.getElementById('cart-close-btn');
+    const backdrop = document.getElementById('cart-backdrop');
+    const openBtns = document.querySelectorAll('.open-cart-btn');
+
+    closeBtn?.addEventListener('click', closeCartModal);
+    backdrop?.addEventListener('click', closeCartModal);
+    openBtns.forEach(btn => btn.addEventListener('click', openCartModal));
+
+    // Global add to cart listener
+    document.querySelectorAll('[data-add-cart]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        try {
+          const raw = btn.getAttribute('data-add-cart');
+          if (!raw) return;
+          const data = JSON.parse(raw);
+          const existing = cart.find(i => i.id === data.id);
+          if (existing) {
+            existing.qty += data.qty || 1;
+          } else {
+            cart.push({
+              id: data.id,
+              name: data.name,
+              price: data.price,
+              qty: data.qty || 1,
+              image: data.image
+            });
+          }
+          openCartModal();
+        } catch (err) {
+          console.error("Error adding to cart:", err);
+        }
+      });
+    });
+
+    // Submit via WhatsApp
+    const submitBtn = document.getElementById('cart-submit-whatsapp');
+    submitBtn?.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert("Por favor agrega al menos un artículo a tu bolsa.");
+        return;
+      }
+
+      const name = (document.getElementById('checkout-name') as HTMLInputElement)?.value.trim();
+      const phone = (document.getElementById('checkout-phone') as HTMLInputElement)?.value.trim();
+      const city = (document.getElementById('checkout-city') as HTMLInputElement)?.value.trim();
+      const address = (document.getElementById('checkout-address') as HTMLInputElement)?.value.trim();
+
+      if (!name || !phone || !city || !address) {
+        alert("Por favor completa tu Nombre, Celular, Ciudad y Dirección para registrar el envío.");
+        return;
+      }
+
+      const total = getCartTotal();
+
+      let itemsText = cart.map(i => `• ${i.qty}x ${i.name} (S/. ${(i.price * i.qty).toFixed(2)})`).join('\n');
+
+      const message = 
+`Hola EXOTIX, quiero culminar mi pedido con Pago Contra Entrega:
+
+🛍️ *Artículos:*
+${itemsText}
+
+💰 *Total a pagar al recibir:* S/. ${total.toFixed(2)}
+🚚 *Envío:* GRATIS a domicilio
+
+📍 *Datos para el despacho:*
+• *Nombre:* ${name}
+• *Celular:* ${phone}
+• *Ciudad:* ${city}
+• *Dirección:* ${address}
+
+Por favor confírmenme para la salida de mi paquete. ¡Muchas gracias!`;
+
+      const encodedMsg = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/?text=${encodedMsg}`;
+
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+
+  // Expose global open method for other components
+  (window as any).openCartWithItem = function(item: CartItem) {
+    const existing = cart.find(i => i.id === item.id);
+    if (existing) {
+      existing.qty += item.qty || 1;
+    } else {
+      cart.push(item);
+    }
+    openCartModal();
+  };
+
+  renderCart();
+  setupCartModalEvents();
+  document.addEventListener('astro:page-load', () => {
+    renderCart();
+    setupCartModalEvents();
+  });
+</script>

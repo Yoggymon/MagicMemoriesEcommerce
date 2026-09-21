@@ -9,6 +9,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
     description: "Tono rosa pastel con herrajes dorados. Incluye espejo LED recargable de 3 tonos, cable USB-C y separadores acolchados.",
     price: "S/. 129.00",
+    numericPrice: 129,
     regularPrice: "S/. 179.00",
     savings: "Ahorras S/. 50.00",
     features: ["Espejo con luz táctil inteligente", "Batería 2000 mAh recargable", "Cuero vegano resistente al agua"]
@@ -21,6 +22,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80",
     description: "Acabado negro profundo con texturado anti-rayaduras y cierres dorados de alta resistencia. El favorito para viajes y estudio.",
     price: "S/. 129.00",
+    numericPrice: 129,
     regularPrice: "S/. 179.00",
     savings: "Ahorras S/. 50.00",
     features: ["Look profesional sobrio y distinguido", "Compartimentos de tamaño personalizable", "Limpieza ultra rápida con paño húmedo"]
@@ -33,6 +35,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
     description: "El maletín completo más un juego exclusivo de 12 brochas de cerdas ultra suaves para base, ojos, rubor y contorno.",
     price: "S/. 159.00",
+    numericPrice: 159,
     regularPrice: "S/. 229.00",
     savings: "Ahorras S/. 70.00",
     features: ["Incluye set de 12 brochas premium", "Estuche organizador con tapa protectora", "Regalo ideal listo para obsequiar"]
@@ -45,6 +48,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=800&q=80",
     description: "Llevate dos maletines completos (combiná colores a tu elección). El combo perfecto para compartir o hacer un regalo de lujo.",
     price: "S/. 219.00",
+    numericPrice: 219,
     regularPrice: "S/. 358.00",
     savings: "Ahorras S/. 139.00",
     features: ["2 maletines con sus espejos LED y cables", "Elegís los colores que prefieras al confirmar", "Envío prioritario con seguimiento"]
@@ -119,13 +123,19 @@ const products = [
               <span class="text-[11px] font-bold text-[#059669] block">{prod.savings}</span>
             </div>
 
-            <a
-              href="#pedido"
-              data-product-select={prod.name}
-              class="px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold text-white bg-[#0F172A] hover:bg-[#1E293B] border border-[#B8860B]/50 transition-colors shadow-xs shrink-0"
+            <button
+              type="button"
+              data-add-cart={JSON.stringify({
+                id: prod.id,
+                name: prod.name,
+                price: prod.numericPrice,
+                qty: 1,
+                image: prod.image
+              })}
+              class="px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold text-white bg-[#0F172A] hover:bg-[#1E293B] border border-[#B8860B]/50 transition-colors shadow-xs shrink-0 cursor-pointer"
             >
               Pedir Este Modelo
-            </a>
+            </button>
           </div>
         </div>
       ))}
