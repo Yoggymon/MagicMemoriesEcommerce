@@ -1,0 +1,21 @@
+---
+// src/components/StickyBuyBar.astro
+---
+
+<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-md border-t border-[#E5E7EB] p-3 shadow-lg flex items-center justify-between gap-3">
+  <div>
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-serif text-lg font-bold text-[#0F172A]">S/. 129.00</span>
+      <span class="text-xs line-through text-[#94A3B8]">S/. 179</span>
+    </div>
+    <span class="text-[10px] text-[#059669] font-bold block">Envío Gratis Incluido</span>
+  </div>
+
+  <a
+    href="#pedido"
+    class="px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-[#0F172A] border border-[#B8860B] shadow-sm flex items-center gap-1.5 shrink-0"
+  >
+    <span>Pedir Contra Entrega</span>
+    <span class="text-[#C5A059]">→</span>
+  </a>
+</div>

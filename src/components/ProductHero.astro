@@ -1,0 +1,310 @@
+---
+// src/components/ProductHero.astro
+const galleryImages = [
+  {
+    id: "img-1",
+    src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80",
+    alt: "Maletín con espejo LED encendido y cosméticos organizados",
+    tag: "Vista Principal con Espejo LED"
+  },
+  {
+    id: "img-2",
+    src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=80",
+    alt: "Detalle de compartimentos modulares y brochas de maquillaje",
+    tag: "Organización Interior Ajustable"
+  },
+  {
+    id: "img-3",
+    src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80",
+    alt: "Acabado exterior de lujo en cuero vegano con herrajes dorados",
+    tag: "Cierre Exterior con Herrajes Dorados"
+  },
+  {
+    id: "img-4",
+    src: "https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=1200&q=80",
+    alt: "Luz táctil regulable en 3 temperaturas de color",
+    tag: "3 Modos de Iluminación LED"
+  },
+  {
+    id: "img-5",
+    src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80",
+    alt: "Maletín portátil listo para viajes y sesiones profesionales",
+    tag: "Portátil y Resistente a Golpes"
+  }
+];
+---
+
+<section id="producto" class="py-8 sm:py-12 lg:py-16 border-b border-[#E5E7EB] bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      
+      <!-- Left Column: Interactive Photo Carousel -->
+      <div class="lg:col-span-7">
+        <div class="sticky top-28 space-y-4">
+          
+          <!-- Main Carousel Display -->
+          <div class="relative rounded-2xl overflow-hidden bg-[#F9FAFB] border border-[#E5E7EB] shadow-sm aspect-[4/3] sm:aspect-[1/1] max-h-[540px] flex items-center justify-center">
+            
+            <!-- Badges on image -->
+            <div class="absolute top-4 left-4 z-10 flex flex-col gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#0F172A] text-white tracking-wide border border-[#B8860B]/40 shadow-xs">
+                EDICIÓN PREMIUM
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#B8860B] text-white tracking-wide shadow-xs">
+                28% OFF HOY
+              </span>
+            </div>
+
+            <!-- Current Main Image -->
+            <img
+              id="main-carousel-img"
+              src={galleryImages[0].src}
+              alt={galleryImages[0].alt}
+              class="w-full h-full object-cover object-center transition-opacity duration-300"
+            />
+
+            <!-- Carousel Prev/Next Overlay Buttons -->
+            <button
+              id="carousel-prev"
+              type="button"
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#0F172A] shadow-md flex items-center justify-center border border-[#E5E7EB] transition-transform hover:scale-105 active:scale-95"
+              aria-label="Foto anterior"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              id="carousel-next"
+              type="button"
+              class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#0F172A] shadow-md flex items-center justify-center border border-[#E5E7EB] transition-transform hover:scale-105 active:scale-95"
+              aria-label="Foto siguiente"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <!-- Image Caption Tag -->
+            <div id="carousel-caption" class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-xs py-1.5 px-3 rounded-lg text-xs font-medium text-[#0F172A] text-center border border-[#E5E7EB] shadow-xs">
+              {galleryImages[0].tag}
+            </div>
+          </div>
+
+          <!-- Thumbnails Strip -->
+          <div class="grid grid-cols-5 gap-2.5 sm:gap-3">
+            {galleryImages.map((img, idx) => (
+              <button
+                type="button"
+                data-index={idx}
+                data-src={img.src}
+                data-alt={img.alt}
+                data-tag={img.tag}
+                class={`carousel-thumb relative rounded-xl overflow-hidden border-2 aspect-square transition-all ${
+                  idx === 0
+                    ? 'border-[#B8860B] ring-2 ring-[#B8860B]/20 shadow-xs'
+                    : 'border-[#E5E7EB] opacity-70 hover:opacity-100 hover:border-slate-400'
+                }`}
+              >
+                <img src={img.src} alt={img.alt} class="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Product Buy & Offer Details -->
+      <div class="lg:col-span-5 flex flex-col">
+        
+        <!-- Social Proof Stars -->
+        <div class="flex items-center gap-2 mb-3">
+          <div class="flex items-center text-[#B8860B]">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <span class="text-xs font-bold text-[#0F172A]">4.9 / 5</span>
+          <span class="text-xs text-[#64748B]">•</span>
+          <a href="#testimonios" class="text-xs font-medium text-[#B8860B] hover:underline">
+            842 clientas satisfechas
+          </a>
+        </div>
+
+        <!-- Product Title -->
+        <h1 class="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#0F172A] leading-tight mb-2">
+          Maletín con Maquillaje Premium & Espejo LED
+        </h1>
+        
+        <p class="text-xs sm:text-sm font-medium text-[#B8860B] tracking-wide uppercase mb-4">
+          Edición Especial — Acabado de Lujo con Luces Regulables
+        </p>
+
+        <!-- Pricing Card -->
+        <div class="p-4 rounded-xl bg-[#FBF7EE] border border-[#E8D7A8] mb-6 flex items-baseline justify-between">
+          <div class="flex items-baseline gap-3">
+            <span class="font-serif text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
+              S/. 129.00
+            </span>
+            <span class="text-base sm:text-lg line-through text-[#94A3B8] font-medium">
+              S/. 179.00
+            </span>
+          </div>
+          <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-[#059669] text-white shadow-xs">
+            Ahorras S/. 50.00
+          </span>
+        </div>
+
+        <!-- Urgency Alert -->
+        <div class="flex items-center gap-2.5 p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#0F172A] mb-6">
+          <span class="text-base">🔥</span>
+          <span><strong>Promoción activa:</strong> Quedan solo <strong>7 maletines</strong> con envío gratis y pago al recibir para entrega inmediata.</span>
+        </div>
+
+        <!-- Key Highlights -->
+        <div class="space-y-2.5 mb-6 text-xs sm:text-sm text-[#334155]">
+          <div class="flex items-center gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-[#B8860B]/15 text-[#B8860B] flex items-center justify-center font-bold text-xs">✓</span>
+            <span><strong>Espejo inteligente táctil:</strong> 3 tonos de luz LED (Fría, Cálida y Neutra).</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-[#B8860B]/15 text-[#B8860B] flex items-center justify-center font-bold text-xs">✓</span>
+            <span><strong>Batería de 2000 mAh:</strong> Recargable por USB-C con días de autonomía.</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-[#B8860B]/15 text-[#B8860B] flex items-center justify-center font-bold text-xs">✓</span>
+            <span><strong>Separadores modulares:</strong> Armá los compartimentos como vos quieras.</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-[#B8860B]/15 text-[#B8860B] flex items-center justify-center font-bold text-xs">✓</span>
+            <span><strong>Set cosmético de regalo:</strong> Incluye aplicadores y organizador de brochas.</span>
+          </div>
+        </div>
+
+        <!-- Quantity & Buy Form -->
+        <div class="space-y-3.5 mb-8">
+          
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold text-[#0F172A] uppercase tracking-wider">Cantidad:</span>
+            <div class="flex items-center border border-[#CBD5E1] rounded-lg bg-white overflow-hidden">
+              <button id="qty-minus" type="button" class="px-3 py-1.5 text-sm font-bold text-[#475569] hover:bg-[#F1F5F9] transition-colors">-</button>
+              <span id="qty-val" class="px-3 py-1.5 text-xs font-bold text-[#0F172A] min-w-[28px] text-center">1</span>
+              <button id="qty-plus" type="button" class="px-3 py-1.5 text-sm font-bold text-[#475569] hover:bg-[#F1F5F9] transition-colors">+</button>
+            </div>
+            <span class="text-xs text-[#059669] font-semibold">Envío Gratis Aplicado</span>
+          </div>
+
+          <!-- Primary CTA Button (Cash on Delivery) -->
+          <a
+            href="#pedido"
+            class="w-full py-4 px-6 rounded-xl font-bold text-sm sm:text-base text-white bg-[#0F172A] hover:bg-[#1E293B] border border-[#B8860B] transition-all shadow-md flex items-center justify-center gap-2 text-center"
+          >
+            <span>PEDIR AHORA — PAGA AL RECIBIR</span>
+            <span class="text-[#C5A059]">→</span>
+          </a>
+
+          <!-- Secondary WhatsApp CTA -->
+          <a
+            href="https://wa.me/?text=Hola,%20quiero%20hacer%20el%20pedido%20del%20Maletin%20con%20Maquillaje%20Premium%20por%20S/.129"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3 px-6 rounded-xl font-bold text-xs sm:text-sm text-[#0F172A] bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] hover:border-[#059669] transition-all flex items-center justify-center gap-2 text-center"
+          >
+            <svg class="w-4 h-4 text-[#059669]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+            </svg>
+            <span>Pedir por WhatsApp</span>
+          </a>
+
+        </div>
+
+        <!-- Trust Features Grid -->
+        <div class="grid grid-cols-3 gap-3 pt-6 border-t border-[#E5E7EB] text-center">
+          <div class="p-2.5 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
+            <div class="text-base mb-1">🚚</div>
+            <div class="text-[11px] font-bold text-[#0F172A]">Envío Gratis</div>
+            <div class="text-[10px] text-[#64748B]">En 24-48 horas</div>
+          </div>
+          <div class="p-2.5 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
+            <div class="text-base mb-1">💵</div>
+            <div class="text-[11px] font-bold text-[#0F172A]">Paga al Recibir</div>
+            <div class="text-[10px] text-[#64748B]">Cero riesgo</div>
+          </div>
+          <div class="p-2.5 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
+            <div class="text-base mb-1">🛡️</div>
+            <div class="text-[11px] font-bold text-[#0F172A]">Garantía 30 Días</div>
+            <div class="text-[10px] text-[#64748B]">Satisfacción 100%</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupProductCarousel() {
+    const mainImg = document.getElementById('main-carousel-img') as HTMLImageElement;
+    const caption = document.getElementById('carousel-caption');
+    const thumbs = document.querySelectorAll('.carousel-thumb');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+
+    if (!mainImg || thumbs.length === 0) return;
+
+    let currentIndex = 0;
+
+    function updateCarousel(index: number) {
+      currentIndex = (index + thumbs.length) % thumbs.length;
+      const targetThumb = thumbs[currentIndex];
+      const src = targetThumb.getAttribute('data-src') || '';
+      const alt = targetThumb.getAttribute('data-alt') || '';
+      const tag = targetThumb.getAttribute('data-tag') || '';
+
+      mainImg.src = src;
+      mainImg.alt = alt;
+      if (caption) caption.textContent = tag;
+
+      thumbs.forEach((t, i) => {
+        if (i === currentIndex) {
+          t.classList.remove('border-[#E5E7EB]', 'opacity-70');
+          t.classList.add('border-[#B8860B]', 'ring-2', 'ring-[#B8860B]/20', 'opacity-100');
+        } else {
+          t.classList.remove('border-[#B8860B]', 'ring-2', 'ring-[#B8860B]/20', 'opacity-100');
+          t.classList.add('border-[#E5E7EB]', 'opacity-70');
+        }
+      });
+    }
+
+    thumbs.forEach((t) => {
+      t.addEventListener('click', () => {
+        const idx = parseInt(t.getAttribute('data-index') || '0', 10);
+        updateCarousel(idx);
+      });
+    });
+
+    prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+    // Quantity selector logic
+    const minus = document.getElementById('qty-minus');
+    const plus = document.getElementById('qty-plus');
+    const val = document.getElementById('qty-val');
+
+    let count = 1;
+    minus?.addEventListener('click', () => {
+      if (count > 1) {
+        count--;
+        if (val) val.textContent = count.toString();
+      }
+    });
+
+    plus?.addEventListener('click', () => {
+      count++;
+      if (val) val.textContent = count.toString();
+    });
+  }
+
+  setupProductCarousel();
+  document.addEventListener('astro:page-load', setupProductCarousel);
+</script>

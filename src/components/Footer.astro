@@ -1,0 +1,77 @@
+---
+// src/components/Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-[#0F172A] text-white pt-16 pb-24 md:pb-16 border-t border-[#B8860B]/30">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full border border-[#B8860B] flex items-center justify-center bg-white/10">
+            <span class="font-serif font-bold text-base text-white">E<span class="text-[#B8860B]">.</span></span>
+          </div>
+          <span class="font-serif text-2xl font-bold tracking-tight text-white">EXOTIX</span>
+        </div>
+        <p class="text-xs text-[#94A3B8] leading-relaxed mb-4">
+          Accesorios de belleza y cuidado personal de alta gama pensados para la mujer moderna. Calidad garantizada y entregas directas a domicilio.
+        </p>
+        <span class="text-xs text-[#C5A059] font-medium">Pago Seguro Contra Entrega</span>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-serif text-sm font-bold text-white mb-4 uppercase tracking-wider">Navegación</h4>
+        <ul class="space-y-2 text-xs text-[#94A3B8]">
+          <li><a href="#producto" class="hover:text-white transition-colors">Maletín con Luz LED</a></li>
+          <li><a href="#caracteristicas" class="hover:text-white transition-colors">Detalles y Materiales</a></li>
+          <li><a href="#catalogo" class="hover:text-white transition-colors">Modelos y Packs (2x2)</a></li>
+          <li><a href="#testimonios" class="hover:text-white transition-colors">Opiniones Verificadas</a></li>
+          <li><a href="#pedido" class="hover:text-white transition-colors">Hacer Pedido</a></li>
+        </ul>
+      </div>
+
+      <!-- Garantía & Envíos -->
+      <div>
+        <h4 class="font-serif text-sm font-bold text-white mb-4 uppercase tracking-wider">Garantía & Envíos</h4>
+        <ul class="space-y-2 text-xs text-[#94A3B8]">
+          <li>✓ Envíos a todo el país en 24-48h</li>
+          <li>✓ Pagás en efectivo o transferencia al recibir</li>
+          <li>✓ 30 días de garantía de fábrica</li>
+          <li>✓ Revisión del paquete antes de pagar</li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="font-serif text-sm font-bold text-white mb-4 uppercase tracking-wider">Atención al Cliente</h4>
+        <p class="text-xs text-[#94A3B8] mb-3">
+          ¿Tenés dudas sobre tu pedido o el envío? Escribinos directo a nuestro canal oficial:
+        </p>
+        <a
+          href="https://wa.me/?text=Hola%20EXOTIX,%20tengo%20una%20consulta%20sobre%20el%20Maletin%20de%20Maquillaje"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-[#059669] hover:bg-[#047857] transition-colors"
+        >
+          <span>WhatsApp de Atención</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B]">
+      <p>© {year} EXOTIX Beauty. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-3">
+        <span>Astro 7</span>
+        <span>•</span>
+        <span>Tailwind v4</span>
+        <span>•</span>
+        <span>Luxury White & Gold</span>
+      </div>
+    </div>
+  </div>
+</footer>

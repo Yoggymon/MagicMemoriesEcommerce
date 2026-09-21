@@ -1,0 +1,57 @@
+---
+// src/components/Features.astro
+const features = [
+  {
+    icon: "💡",
+    title: "Espejo LED Inteligente de 3 Tonos",
+    description: "Cambiá con un toque suave entre luz cálida (atardecer), fría (oficina) y natural (día). Mantené presionado para regular la intensidad del brillo a tu gusto exacto."
+  },
+  {
+    icon: "🔋",
+    title: "Batería de 2000 mAh Recargable",
+    description: "Olvidate de las pilas. Se carga por cable USB-C como tu celular y te brinda hasta una semana entera de maquillaje diario con una sola carga."
+  },
+  {
+    icon: "🧩",
+    title: "Compartimentos Ajustables de EVA",
+    description: "Los separadores acolchados se pueden mover o quitar según tus productos: sombras grandes, labiales, bases o perfumes quedan protegidos contra golpes."
+  },
+  {
+    icon: "✨",
+    title: "Cuero Vegano & Herrajes Reforzados",
+    description: "Material exterior de alta gama con doble cremallera dorada. Si se mancha con polvo o base, se limpia en un segundo pasando un paño suave húmedo."
+  }
+];
+---
+
+<section id="caracteristicas" class="py-16 sm:py-20 lg:py-24 border-b border-[#E5E7EB] bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <span class="text-xs font-bold text-[#B8860B] uppercase tracking-widest block mb-2">
+        Detalles que marcan la diferencia
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight mb-3">
+        Diseñado para maquillarte con precisión en cualquier lugar
+      </h2>
+      <p class="text-sm sm:text-base text-[#64748B] leading-relaxed">
+        Cada milímetro del maletín fue pensado para darte orden, iluminación profesional y durabilidad en tus viajes o en tu tocador.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {features.map((f) => (
+        <div class="p-6 rounded-2xl bg-[#FAFAFA] border border-[#E5E7EB] hover:border-[#B8860B]/50 transition-colors">
+          <div class="text-3xl mb-4">{f.icon}</div>
+          <h3 class="font-serif text-lg font-bold text-[#0F172A] mb-2">
+            {f.title}
+          </h3>
+          <p class="text-xs sm:text-sm text-[#475569] leading-relaxed">
+            {f.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

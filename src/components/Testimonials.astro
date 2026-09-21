@@ -1,0 +1,124 @@
+---
+// src/components/Testimonials.astro
+const reviews = [
+  {
+    name: "Camila R.",
+    city: "Lima, Perú",
+    date: "Hace 3 días",
+    rating: 5,
+    title: "La luz del espejo es increíble",
+    comment: "Tenía dudas de comprar por internet, pero elegí la opción de pagar al recibir al repartidor y todo llegó perfecto en 24 horas. La luz tiene tres tonos y alumbra súper bien para maquillarse de noche. Lo amo.",
+    verified: true
+  },
+  {
+    name: "Mariana S.",
+    city: "Arequipa, Perú",
+    date: "Hace 1 semana",
+    rating: 5,
+    title: "Súper ordenado y elegante",
+    comment: "Pude acomodar todas mis sombras y brochas en los compartimentos. Se siente de muy buena calidad y los cierres dorados son resistentes. Muy recomendado para viajes.",
+    verified: true
+  },
+  {
+    name: "Valeria M.",
+    city: "Trujillo, Perú",
+    date: "Hace 2 semanas",
+    rating: 5,
+    title: "El mejor regalo que me hice",
+    comment: "Viene con el cable USB para cargarlo y la batería dura un montón. El espejo es nítido y no distorsiona nada. Llegó bien protegido en su caja.",
+    verified: true
+  },
+  {
+    name: "Luciana T.",
+    city: "Chiclayo, Perú",
+    date: "Hace 3 semanas",
+    rating: 5,
+    title: "Excelente atención por WhatsApp",
+    comment: "Hice el pedido un martes y el jueves en la mañana ya estaba en mi puerta. Pagué en efectivo al recibir. Muy conforme con la compra.",
+    verified: true
+  }
+];
+---
+
+<section id="testimonios" class="py-16 sm:py-20 lg:py-24 border-b border-[#E5E7EB] bg-[#FAFAFA]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <span class="text-xs font-bold text-[#B8860B] uppercase tracking-widest block mb-2">
+        Opiniones Reales
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight mb-3">
+        Lo que dicen nuestras clientas
+      </h2>
+      <p class="text-sm sm:text-base text-[#64748B] leading-relaxed">
+        Más de 800 mujeres ya tienen su maletín en casa. Calificación promedio de 4.9 sobre 5 estrellas.
+      </p>
+    </div>
+
+    <!-- Overall Rating Banner -->
+    <div class="max-w-4xl mx-auto p-5 sm:p-6 rounded-2xl bg-white border border-[#E5E7EB] mb-10 flex flex-col sm:flex-row items-center justify-around gap-6 text-center shadow-xs">
+      <div>
+        <div class="font-serif text-4xl font-extrabold text-[#0F172A]">4.9 / 5</div>
+        <div class="flex items-center justify-center text-[#B8860B] text-sm mt-1">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <div class="text-xs text-[#64748B] mt-0.5 font-medium">Promedio de satisfacción</div>
+      </div>
+
+      <div class="h-10 w-px bg-[#E5E7EB] hidden sm:block"></div>
+
+      <div>
+        <div class="font-serif text-4xl font-extrabold text-[#059669]">98%</div>
+        <div class="text-xs text-[#64748B] mt-1 font-medium">Recomiendan este maletín</div>
+      </div>
+
+      <div class="h-10 w-px bg-[#E5E7EB] hidden sm:block"></div>
+
+      <div>
+        <div class="font-serif text-4xl font-extrabold text-[#B8860B]">100%</div>
+        <div class="text-xs text-[#64748B] mt-1 font-medium">Pago seguro contra entrega</div>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      {reviews.map((rev) => (
+        <div class="p-6 rounded-2xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-1 text-[#B8860B] text-sm">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[11px] text-[#94A3B8] font-medium">{rev.date}</span>
+            </div>
+
+            <h4 class="font-serif text-base sm:text-lg font-bold text-[#0F172A] mb-2">
+              "{rev.title}"
+            </h4>
+
+            <p class="text-xs sm:text-sm text-[#475569] leading-relaxed mb-4">
+              {rev.comment}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#B8860B]/30 flex items-center justify-center font-serif font-bold text-xs text-[#0F172A]">
+                {rev.name.charAt(0)}
+              </span>
+              <div>
+                <span class="text-xs font-bold text-[#0F172A] block">{rev.name}</span>
+                <span class="text-[11px] text-[#64748B]">{rev.city}</span>
+              </div>
+            </div>
+
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-[#059669] bg-[#ECFDF5] px-2 py-0.5 rounded-md border border-[#A7F3D0]">
+              <span>✓</span> Compra Verificada
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

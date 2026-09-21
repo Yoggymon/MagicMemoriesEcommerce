@@ -1,0 +1,43 @@
+---
+// src/components/Navbar.astro
+---
+
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E5E7EB]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#B8860B] flex items-center justify-center bg-[#FAF8F5]">
+        <span class="font-serif font-bold text-lg sm:text-xl text-[#0F172A]">E<span class="text-[#B8860B]">.</span></span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] leading-none">
+          EXOTIX
+        </span>
+        <span class="text-[9px] sm:text-[10px] tracking-widest text-[#B8860B] uppercase font-semibold mt-1">
+          Luxe Beauty & Care
+        </span>
+      </div>
+    </a>
+
+    <!-- Nav Links Desktop -->
+    <nav class="hidden md:flex items-center gap-8 text-xs sm:text-sm font-medium text-[#4B5563]">
+      <a href="#producto" class="hover:text-[#0F172A] transition-colors">El Maletín</a>
+      <a href="#caracteristicas" class="hover:text-[#0F172A] transition-colors">Detalles y Luces LED</a>
+      <a href="#catalogo" class="hover:text-[#0F172A] transition-colors">Modelos y Packs</a>
+      <a href="#testimonios" class="hover:text-[#0F172A] transition-colors">Testimonios (+850)</a>
+    </nav>
+
+    <!-- Action -->
+    <div class="flex items-center gap-3">
+      <a
+        href="#pedido"
+        class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#0F172A] hover:bg-[#1E293B] border border-[#B8860B]/40 transition-colors shadow-xs"
+      >
+        <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span>Pedir Ahora</span>
+      </a>
+    </div>
+  </div>
+</header>

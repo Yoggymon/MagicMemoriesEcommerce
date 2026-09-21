@@ -1,0 +1,178 @@
+---
+// src/components/OrderForm.astro
+---
+
+<section id="pedido" class="py-16 sm:py-20 lg:py-24 border-b border-[#E5E7EB] bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs font-bold text-[#059669] bg-[#ECFDF5] px-3 py-1 rounded-full border border-[#A7F3D0] inline-block mb-3">
+        ✓ Pago 100% Seguro al Recibir en tu Puerta
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight mb-2">
+        Completá tus datos para el envío
+      </h2>
+      <p class="text-xs sm:text-sm text-[#64748B]">
+        Un asesor de EXOTIX se comunicará por WhatsApp en los próximos minutos para confirmar tu dirección antes del despacho.
+      </p>
+    </div>
+
+    <div class="rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB] p-6 sm:p-8 lg:p-10 shadow-sm">
+      
+      <form class="space-y-4" onsubmit="event.preventDefault(); alert('¡Pedido registrado con éxito! Te escribiremos por WhatsApp para confirmar tu entrega.');">
+        
+        <!-- Model Selection -->
+        <div>
+          <label class="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-2">
+            1. Elegí tu Modelo o Pack:
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-[#CBD5E1] bg-white cursor-pointer hover:border-[#B8860B] transition-colors has-[:checked]:border-[#B8860B] has-[:checked]:ring-2 has-[:checked]:ring-[#B8860B]/20">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="product_model" value="rose" checked class="accent-[#B8860B]" />
+                <span class="text-xs font-bold text-[#0F172A]">Rose Gold con Luces LED</span>
+              </div>
+              <span class="text-xs font-bold text-[#0F172A]">S/. 129</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-[#CBD5E1] bg-white cursor-pointer hover:border-[#B8860B] transition-colors has-[:checked]:border-[#B8860B] has-[:checked]:ring-2 has-[:checked]:ring-[#B8860B]/20">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="product_model" value="black" class="accent-[#B8860B]" />
+                <span class="text-xs font-bold text-[#0F172A]">Black Diamond con Luces</span>
+              </div>
+              <span class="text-xs font-bold text-[#0F172A]">S/. 129</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-[#CBD5E1] bg-white cursor-pointer hover:border-[#B8860B] transition-colors has-[:checked]:border-[#B8860B] has-[:checked]:ring-2 has-[:checked]:ring-[#B8860B]/20">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="product_model" value="deluxe" class="accent-[#B8860B]" />
+                <span class="text-xs font-bold text-[#0F172A]">Kit Deluxe (+ 12 Brochas)</span>
+              </div>
+              <span class="text-xs font-bold text-[#0F172A]">S/. 159</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-[#CBD5E1] bg-white cursor-pointer hover:border-[#B8860B] transition-colors has-[:checked]:border-[#B8860B] has-[:checked]:ring-2 has-[:checked]:ring-[#B8860B]/20">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="product_model" value="duo" class="accent-[#B8860B]" />
+                <span class="text-xs font-bold text-[#0F172A]">Pack Dúo (2 Maletines)</span>
+              </div>
+              <span class="text-xs font-bold text-[#0F172A]">S/. 219</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Customer details -->
+        <div class="pt-4 border-t border-[#E5E7EB] space-y-4">
+          <label class="block text-xs font-bold text-[#0F172A] uppercase tracking-wider">
+            2. Datos para la Entrega a Domicilio:
+          </label>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-[#475569] mb-1">Nombre Completo</label>
+              <input
+                type="text"
+                required
+                placeholder="Nombre y Apellido"
+                class="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CBD5E1] focus:border-[#B8860B] focus:outline-none text-xs sm:text-sm text-[#0F172A] placeholder-slate-400"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#475569] mb-1">Celular / WhatsApp (Obligatorio)</label>
+              <input
+                type="tel"
+                required
+                placeholder="Ej. 987 654 321"
+                class="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CBD5E1] focus:border-[#B8860B] focus:outline-none text-xs sm:text-sm text-[#0F172A] placeholder-slate-400"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-[#475569] mb-1">Departamento / Ciudad</label>
+              <input
+                type="text"
+                required
+                placeholder="Ej. Lima, Arequipa, Trujillo..."
+                class="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CBD5E1] focus:border-[#B8860B] focus:outline-none text-xs sm:text-sm text-[#0F172A] placeholder-slate-400"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#475569] mb-1">Dirección Exacta (Calle, Nro, Referencia)</label>
+              <input
+                type="text"
+                required
+                placeholder="Ej. Av. Larco 123, Dpto 401"
+                class="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CBD5E1] focus:border-[#B8860B] focus:outline-none text-xs sm:text-sm text-[#0F172A] placeholder-slate-400"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method Reminder -->
+        <div class="p-3.5 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-base">💵</span>
+            <span class="font-bold text-[#0F172A]">Forma de pago: Pago Contra Entrega</span>
+          </div>
+          <span class="text-[#059669] font-bold">Pagas al recibir en mano</span>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="p-4 rounded-xl bg-[#FBF7EE] border border-[#E8D7A8] space-y-1.5 text-xs text-[#0F172A]">
+          <div class="flex justify-between">
+            <span class="text-[#64748B]">Envío a domicilio:</span>
+            <span class="text-[#059669] font-bold">GRATIS (S/. 0.00)</span>
+          </div>
+          <div class="flex justify-between text-sm font-bold pt-2 border-t border-[#E8D7A8]">
+            <span>Total a abonar al repartidor:</span>
+            <span id="order-total-display" class="font-serif text-lg text-[#0F172A]">S/. 129.00</span>
+          </div>
+        </div>
+
+        <!-- Confirm Button -->
+        <button
+          type="submit"
+          class="w-full py-4 rounded-xl font-bold text-sm sm:text-base text-white bg-[#0F172A] hover:bg-[#1E293B] border border-[#B8860B] transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+        >
+          <span>CONFIRMAR MI PEDIDO CON ENVÍO GRATIS</span>
+          <span class="text-[#C5A059]">→</span>
+        </button>
+
+        <p class="text-[11px] text-center text-[#64748B] pt-1">
+          🔒 Tus datos están protegidos. No cobramos nada por adelantado.
+        </p>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function setupOrderForm() {
+    const radioInputs = document.querySelectorAll('input[name="product_model"]');
+    const totalDisplay = document.getElementById('order-total-display');
+
+    const prices: Record<string, string> = {
+      rose: "S/. 129.00",
+      black: "S/. 129.00",
+      deluxe: "S/. 159.00",
+      duo: "S/. 219.00"
+    };
+
+    radioInputs.forEach((input) => {
+      input.addEventListener('change', (e) => {
+        const val = (e.target as HTMLInputElement).value;
+        if (totalDisplay && prices[val]) {
+          totalDisplay.textContent = prices[val];
+        }
+      });
+    });
+  }
+
+  setupOrderForm();
+  document.addEventListener('astro:page-load', setupOrderForm);
+</script>
