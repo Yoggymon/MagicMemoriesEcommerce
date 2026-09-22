@@ -40,7 +40,7 @@ Compradores navegando principalmente desde teléfonos móviles (Instagram/TikTok
 
 ## Brand Commitments
 
-- Nombre: **EXOTIX // Maletín Premium con Luz LED**
+- Nombre: **Magic Memories // Maletín Premium con Luz LED**
 - Tono: Sofisticado, elegante, confiable y directo.
 - Oferta clave: Pago Contra Entrega (Paga al recibir en tu puerta) + Envío Gratis.
 

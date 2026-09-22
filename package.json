@@ -1,5 +1,5 @@
 {
-  "name": "d-trabajo-proyectos-ecommerce",
+  "name": "magic-memories",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -18,5 +18,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
   }
 }
