@@ -1,37 +1,97 @@
 ---
 // src/components/ProductHero.astro
-const galleryImages = [
+const products = [
   {
-    id: "img-1",
-    src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1920&q=85",
-    alt: "Maletín con espejo LED encendido y cosméticos organizados",
-    tag: "Espejo LED Inteligente de 3 Tonos con Pantalla Táctil HD"
+    id: "prod-1",
+    name: "Maletín Rose Gold con Espejo LED",
+    shortName: "Rose Gold",
+    tagline: "Tono Rosa Pastel con Herrajes Dorados & Espejo LED HD",
+    badge: "MÁS VENDIDO",
+    badgeColor: "bg-[#B8860B] text-white",
+    discount: "28% OFF",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85",
+    alt: "Maletín Rose Gold con espejo LED encendido y cosméticos organizados",
+    description: "Tono rosa pastel con herrajes dorados. Incluye espejo LED recargable de 3 tonos, cable USB-C y separadores acolchados desmontables.",
+    price: "S/. 129.00",
+    numericPrice: 129,
+    regularPrice: "S/. 179.00",
+    savings: "Ahorras S/. 50.00 con envío gratis",
+    features: [
+      "Espejo táctil con brillo graduable en 3 tonos",
+      "Batería 2000 mAh recargable por USB-C",
+      "Separadores acolchados desmontables de EVA",
+      "Cuero vegano impermeable con herrajes dorados"
+    ]
   },
   {
-    id: "img-2",
-    src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1920&q=85",
-    alt: "Compartimentos modulares ajustables y organizador de brochas",
-    tag: "Compartimentos de EVA Acolchados y Modulares"
+    id: "prod-2",
+    name: "Maletín Black Diamond con Espejo LED",
+    shortName: "Black Diamond",
+    tagline: "Acabado Negro Profundo Texturado Anti-Rayaduras",
+    badge: "EDICIÓN ELEGANTE",
+    badgeColor: "bg-[#0F172A] text-white border border-[#B8860B]",
+    discount: "28% OFF",
+    image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=85",
+    alt: "Maletín Black Diamond con cierres dorados de alta resistencia",
+    description: "Acabado negro profundo con texturado anti-rayaduras y cierres dorados de alta resistencia. El favorito para viajes, sesiones y estudio profesional.",
+    price: "S/. 129.00",
+    numericPrice: 129,
+    regularPrice: "S/. 179.00",
+    savings: "Ahorras S/. 50.00 con envío gratis",
+    features: [
+      "Look profesional sobrio y distinguido",
+      "Compartimentos de tamaño personalizable",
+      "Limpieza ultra rápida con paño húmedo",
+      "Espejo táctil HD con 3 temperaturas de luz"
+    ]
   },
   {
-    id: "img-3",
-    src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1920&q=85",
-    alt: "Acabado exterior de lujo en cuero vegano con herrajes dorados reforzados",
-    tag: "Cuero Vegano Texturizado con Herrajes Dorados"
+    id: "prod-3",
+    name: "Kit Deluxe: Maletín + 12 Brochas Profesionales",
+    shortName: "Kit Deluxe",
+    tagline: "Maletín Completo + Juego Exclusivo de 12 Brochas Ultra Suaves",
+    badge: "MEJOR VALOR",
+    badgeColor: "bg-[#059669] text-white",
+    discount: "31% OFF",
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=85",
+    alt: "Kit Deluxe con Maletín y 12 brochas profesionales de cerdas suaves",
+    description: "El maletín completo con espejo LED más un juego exclusivo de 12 brochas profesionales de cerdas ultra suaves para base, ojos, rubor y contorno.",
+    price: "S/. 159.00",
+    numericPrice: 159,
+    regularPrice: "S/. 229.00",
+    savings: "Ahorras S/. 70.00 con envío gratis",
+    features: [
+      "Incluye set exclusivo de 12 brochas premium",
+      "Estuche con tapa protectora para brochas",
+      "Espejo táctil con 3 tonos de luz regulables",
+      "Regalo de lujo listo para obsequiar"
+    ]
   },
   {
-    id: "img-4",
-    src: "https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=1920&q=85",
-    alt: "Luz táctil regulable en 3 temperaturas de color",
-    tag: "3 Temperaturas de Luz: Fría, Cálida y Natural"
-  },
-  {
-    id: "img-5",
-    src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1920&q=85",
-    alt: "Maletín transportable con correa ergonómica para viajes",
-    tag: "Diseño Liviano y Cómodo para Viajes y Sesiones"
+    id: "prod-4",
+    name: "Pack Dúo: 2 Maletines Premium con Espejo LED",
+    shortName: "Pack Dúo (2x)",
+    tagline: "2 Maletines Completos (Colores a tu Elección)",
+    badge: "MÁXIMO AHORRO",
+    badgeColor: "bg-[#B8860B] text-white",
+    discount: "39% OFF",
+    image: "https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=1200&q=85",
+    alt: "Pack Dúo con 2 maletines con espejo LED recargable",
+    description: "Llevate dos maletines completos (combiná colores Rose Gold y Black a tu elección). El combo perfecto para compartir con mamá, hermana o amiga.",
+    price: "S/. 219.00",
+    numericPrice: 219,
+    regularPrice: "S/. 358.00",
+    savings: "Ahorras S/. 139.00 con envío gratis",
+    features: [
+      "2 maletines con sus espejos LED y cables USB-C",
+      "Elegís los colores que prefieras al confirmar por WhatsApp",
+      "Envío prioritario express incluido",
+      "El mayor descuento de toda la temporada"
+    ]
   }
 ];
+
+const initialProduct = products[0];
 ---
 
 <section id="producto" class="border-b border-[#E5E7EB] bg-white">
@@ -42,19 +102,25 @@ const galleryImages = [
       
       <!-- Top badges over carousel -->
       <div class="absolute top-3 sm:top-6 left-3 sm:left-8 z-20 flex flex-wrap gap-1.5 sm:gap-2">
-        <span class="px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-[#0F172A] text-white tracking-wider border border-[#B8860B]/40 shadow-xs">
-          EDICIÓN EXCLUSIVA 2026
+        <span
+          id="carousel-badge"
+          class={`px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-wide shadow-xs ${initialProduct.badgeColor}`}
+        >
+          {initialProduct.badge}
         </span>
-        <span class="px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-[#B8860B] text-white tracking-wide shadow-xs">
-          28% DE DESCUENTO
+        <span
+          id="carousel-discount"
+          class="px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-[#0F172A] text-white tracking-wider border border-[#B8860B]/40 shadow-xs"
+        >
+          {initialProduct.discount}
         </span>
       </div>
 
       <!-- Main Full-Bleed Image Display -->
       <img
         id="main-carousel-img"
-        src={galleryImages[0].src}
-        alt={galleryImages[0].alt}
+        src={initialProduct.image}
+        alt={initialProduct.alt}
         class="w-full h-full object-cover object-center transition-opacity duration-300"
       />
 
@@ -84,39 +150,40 @@ const galleryImages = [
       <!-- Bottom Caption Bar on Carousel -->
       <div class="absolute bottom-2.5 sm:bottom-4 left-3 sm:left-8 right-3 sm:right-8 z-20 flex items-center justify-between gap-2 pointer-events-none">
         <span id="carousel-caption" class="bg-white/95 backdrop-blur-xs py-1 px-2.5 sm:py-1.5 sm:px-3.5 rounded-lg text-[10px] sm:text-xs font-medium text-[#0F172A] border border-[#E5E7EB] shadow-xs truncate max-w-[200px] sm:max-w-md">
-          {galleryImages[0].tag}
+          {initialProduct.name}
         </span>
         <span id="carousel-counter" class="bg-[#0F172A]/80 text-white font-mono text-[10px] sm:text-xs py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-lg shrink-0">
-          1 / 5
+          1 / {products.length}
         </span>
       </div>
 
     </div>
 
-    <!-- Thumbnails Strip Under Carousel -->
+    <!-- Thumbnails Strip Under Carousel: 4 Variants -->
     <div class="max-w-4xl mx-auto px-2.5 sm:px-4 py-2.5 sm:py-4">
-      <div class="grid grid-cols-5 gap-1.5 sm:gap-3">
-        {galleryImages.map((img, idx) => (
+      <div class="grid grid-cols-4 gap-1.5 sm:gap-3">
+        {products.map((p, idx) => (
           <button
             type="button"
             data-index={idx}
-            data-src={img.src}
-            data-alt={img.alt}
-            data-tag={img.tag}
-            class={`carousel-thumb relative rounded-lg sm:rounded-xl overflow-hidden border-2 aspect-[16/10] sm:aspect-[16/9] transition-all cursor-pointer ${
+            class={`carousel-thumb relative rounded-lg sm:rounded-xl overflow-hidden border-2 aspect-[16/10] sm:aspect-[16/9] transition-all cursor-pointer group ${
               idx === 0
                 ? 'border-[#B8860B] ring-2 ring-[#B8860B]/20 shadow-xs opacity-100'
-                : 'border-[#E5E7EB] opacity-60 hover:opacity-100'
+                : 'border-[#E5E7EB] opacity-65 hover:opacity-100'
             }`}
           >
-            <img src={img.src} alt={img.alt} class="w-full h-full object-cover" />
+            <img src={p.image} alt={p.name} class="w-full h-full object-cover" />
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-1 sm:p-1.5 flex flex-col justify-end text-left">
+              <span class="text-[9px] sm:text-[11px] font-bold text-white truncate leading-tight">{p.shortName}</span>
+              <span class="text-[8px] sm:text-[10px] text-[#F8E7B9] font-semibold">{p.price}</span>
+            </div>
           </button>
         ))}
       </div>
     </div>
   </div>
 
-  <!-- 2. Información del Producto & Compra Proporcional -->
+  <!-- 2. Información Dinámica del Producto & Compra Proporcional -->
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
@@ -134,35 +201,26 @@ const galleryImages = [
           </a>
         </div>
 
-        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] leading-tight mb-2">
-          Maletín con Maquillaje Premium & Espejo LED
+        <h1 id="product-title" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] leading-tight mb-2">
+          {initialProduct.name}
         </h1>
 
-        <p class="text-xs sm:text-sm font-semibold text-[#B8860B] tracking-wide uppercase mb-4">
-          Organizador Profesional de Cosméticos con Iluminación Táctil
+        <p id="product-subtitle" class="text-xs sm:text-sm font-semibold text-[#B8860B] tracking-wide uppercase mb-4">
+          {initialProduct.tagline}
         </p>
 
-        <p class="text-xs sm:text-sm text-[#475569] leading-relaxed mb-6">
-          El maletín todo en uno que necesitás para tener tus cosméticos ordenados, protegidos y con luz profesional donde vayas. Espejo táctil con 3 tonos de iluminación, compartimentos de tamaño regulable y batería recargable por USB-C.
+        <p id="product-description" class="text-xs sm:text-sm text-[#475569] leading-relaxed mb-6">
+          {initialProduct.description}
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[#334155] mb-6">
-          <div class="flex items-center gap-2">
-            <span class="text-[#059669] font-bold">✓</span>
-            <span>Espejo táctil con brillo graduable</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-[#059669] font-bold">✓</span>
-            <span>Batería de larga duración USB-C</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-[#059669] font-bold">✓</span>
-            <span>Separadores acolchados desmontables</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-[#059669] font-bold">✓</span>
-            <span>Acabado en cuero impermeable</span>
-          </div>
+        <!-- Product Features List -->
+        <div id="product-features" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[#334155] mb-6">
+          {initialProduct.features.map(f => (
+            <div class="flex items-center gap-2">
+              <span class="text-[#059669] font-bold">✓</span>
+              <span>{f}</span>
+            </div>
+          ))}
         </div>
 
       </div>
@@ -174,17 +232,19 @@ const galleryImages = [
           <div class="flex items-baseline justify-between mb-4 pb-4 border-b border-[#E5E7EB]">
             <div>
               <div class="flex items-baseline gap-2">
-                <span class="font-serif text-2xl sm:text-4xl font-extrabold text-[#0F172A]">
-                  S/. 129.00
+                <span id="product-price" class="font-serif text-2xl sm:text-4xl font-extrabold text-[#0F172A]">
+                  {initialProduct.price}
                 </span>
-                <span class="text-xs sm:text-sm line-through text-[#94A3B8] font-medium">
-                  S/. 179.00
+                <span id="product-regular-price" class="text-xs sm:text-sm line-through text-[#94A3B8] font-medium">
+                  {initialProduct.regularPrice}
                 </span>
               </div>
-              <span class="text-[11px] font-bold text-[#059669]">Ahorras S/. 50.00 con envío gratis</span>
+              <span id="product-savings" class="text-[11px] font-bold text-[#059669]">
+                {initialProduct.savings}
+              </span>
             </div>
-            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-[#B8860B] text-white">
-              28% OFF
+            <span id="product-discount-badge" class="px-2.5 py-1 rounded-md text-xs font-bold bg-[#B8860B] text-white">
+              {initialProduct.discount}
             </span>
           </div>
 
@@ -234,42 +294,82 @@ const galleryImages = [
   </div>
 </section>
 
-<script>
+<script define:vars={{ products }}>
   function setupProductCarousel() {
-    const mainImg = document.getElementById('main-carousel-img') as HTMLImageElement;
+    const mainImg = document.getElementById('main-carousel-img');
     const caption = document.getElementById('carousel-caption');
     const counter = document.getElementById('carousel-counter');
+    const badge = document.getElementById('carousel-badge');
+    const discount = document.getElementById('carousel-discount');
     const thumbs = document.querySelectorAll('.carousel-thumb');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
+
+    // Dynamic product info elements
+    const titleEl = document.getElementById('product-title');
+    const subtitleEl = document.getElementById('product-subtitle');
+    const descEl = document.getElementById('product-description');
+    const featuresEl = document.getElementById('product-features');
+    const priceEl = document.getElementById('product-price');
+    const regPriceEl = document.getElementById('product-regular-price');
+    const savingsEl = document.getElementById('product-savings');
+    const discountBadgeEl = document.getElementById('product-discount-badge');
+
+    const buyNowBtn = document.getElementById('hero-buy-now-btn');
+    const addCartBtn = document.getElementById('hero-add-cart-btn');
 
     if (!mainImg || thumbs.length === 0) return;
 
     let currentIndex = 0;
 
-    function updateCarousel(index: number) {
-      currentIndex = (index + thumbs.length) % thumbs.length;
-      const targetThumb = thumbs[currentIndex];
-      const src = targetThumb.getAttribute('data-src') || '';
-      const alt = targetThumb.getAttribute('data-alt') || '';
-      const tag = targetThumb.getAttribute('data-tag') || '';
+    function updateCarousel(index) {
+      currentIndex = (index + products.length) % products.length;
+      const currentProduct = products[currentIndex];
 
-      mainImg.src = src;
-      mainImg.alt = alt;
-      if (caption) caption.textContent = tag;
-      if (counter) counter.textContent = `${currentIndex + 1} / ${thumbs.length}`;
+      // Update Carousel Image & Tags
+      mainImg.src = currentProduct.image;
+      mainImg.alt = currentProduct.alt;
 
+      if (caption) caption.textContent = currentProduct.name;
+      if (counter) counter.textContent = `${currentIndex + 1} / ${products.length}`;
+      if (badge) {
+        badge.textContent = currentProduct.badge;
+        badge.className = `px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-wide shadow-xs ${currentProduct.badgeColor}`;
+      }
+      if (discount) discount.textContent = currentProduct.discount;
+
+      // Update Thumbnails active state
       thumbs.forEach((t, i) => {
         if (i === currentIndex) {
-          t.classList.remove('border-[#E5E7EB]', 'opacity-60');
+          t.classList.remove('border-[#E5E7EB]', 'opacity-65');
           t.classList.add('border-[#B8860B]', 'ring-2', 'ring-[#B8860B]/20', 'opacity-100');
         } else {
           t.classList.remove('border-[#B8860B]', 'ring-2', 'ring-[#B8860B]/20', 'opacity-100');
-          t.classList.add('border-[#E5E7EB]', 'opacity-60');
+          t.classList.add('border-[#E5E7EB]', 'opacity-65');
         }
       });
+
+      // Update Product Details Card below carousel
+      if (titleEl) titleEl.textContent = currentProduct.name;
+      if (subtitleEl) subtitleEl.textContent = currentProduct.tagline;
+      if (descEl) descEl.textContent = currentProduct.description;
+
+      if (featuresEl) {
+        featuresEl.innerHTML = currentProduct.features.map(f => `
+          <div class="flex items-center gap-2">
+            <span class="text-[#059669] font-bold">✓</span>
+            <span>${f}</span>
+          </div>
+        `).join('');
+      }
+
+      if (priceEl) priceEl.textContent = currentProduct.price;
+      if (regPriceEl) regPriceEl.textContent = currentProduct.regularPrice;
+      if (savingsEl) savingsEl.textContent = currentProduct.savings;
+      if (discountBadgeEl) discountBadgeEl.textContent = currentProduct.discount;
     }
 
+    // Thumbnails click
     thumbs.forEach((t) => {
       t.addEventListener('click', () => {
         const idx = parseInt(t.getAttribute('data-index') || '0', 10);
@@ -277,32 +377,39 @@ const galleryImages = [
       });
     });
 
+    // Arrow buttons
     prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
     nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
 
-    // Hook up Buy Now and Add to Cart to CartModal
-    const buyNowBtn = document.getElementById('hero-buy-now-btn');
-    const addCartBtn = document.getElementById('hero-add-cart-btn');
-
-    const heroItem = {
-      id: "prod-1",
-      name: "Maletín con Maquillaje Premium & Espejo LED",
-      price: 129,
-      qty: 1,
-      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
-    };
+    // Hook up Buy Now and Add to Cart to CartModal with current active variant
+    function getActiveCartItem() {
+      const p = products[currentIndex];
+      return {
+        id: p.id,
+        name: p.name,
+        price: p.numericPrice,
+        qty: 1,
+        image: p.image
+      };
+    }
 
     buyNowBtn?.addEventListener('click', () => {
-      if ((window as any).openCartWithItem) {
-        (window as any).openCartWithItem(heroItem);
+      if (window.openCartWithItem) {
+        window.openCartWithItem(getActiveCartItem());
       }
     });
 
     addCartBtn?.addEventListener('click', () => {
-      if ((window as any).openCartWithItem) {
-        (window as any).openCartWithItem(heroItem);
+      if (window.openCartWithItem) {
+        window.openCartWithItem(getActiveCartItem());
       }
     });
+
+    // Expose method to select product from anywhere
+    window.selectCarouselProduct = function(idx) {
+      updateCarousel(idx);
+      document.getElementById('producto')?.scrollIntoView({ behavior: 'smooth' });
+    };
   }
 
   setupProductCarousel();

@@ -73,11 +73,15 @@ const products = [
 
     <!-- 2 Rows x 2 Columns Grid requested by user -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-      {products.map((prod) => (
+      {products.map((prod, idx) => (
         <div class="rounded-2xl bg-white border border-[#E5E7EB] hover:border-[#B8860B]/60 transition-all p-5 sm:p-6 shadow-xs flex flex-col justify-between group">
           <div>
             <!-- Image & Badge Container -->
-            <div class="relative rounded-xl overflow-hidden bg-[#F8FAFC] aspect-[16/10] mb-5 border border-[#E5E7EB]">
+            <div
+              data-view-carousel={idx}
+              class="relative rounded-xl overflow-hidden bg-[#F8FAFC] aspect-[16/10] mb-5 border border-[#E5E7EB] cursor-pointer"
+              title="Click para ver en el carrusel principal"
+            >
               <span class={`absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-bold ${prod.badgeColor}`}>
                 {prod.badge}
               </span>
@@ -86,6 +90,9 @@ const products = [
                 alt={prod.name}
                 class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
               />
+              <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                🔍 Ver en carrusel
+              </span>
             </div>
 
             <!-- Stars & Title -->
@@ -94,7 +101,11 @@ const products = [
               <span class="text-xs text-[#64748B] ml-1 font-medium">5.0</span>
             </div>
 
-            <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#0F172A] mb-2 leading-snug">
+            <h3
+              data-view-carousel={idx}
+              class="font-serif text-xl sm:text-2xl font-bold text-[#0F172A] mb-2 leading-snug cursor-pointer hover:text-[#B8860B] transition-colors"
+              title="Click para ver en el carrusel principal"
+            >
               {prod.name}
             </h3>
 
@@ -143,3 +154,19 @@ const products = [
 
   </div>
 </section>
+
+<script>
+  function setupCatalogSync() {
+    document.querySelectorAll('[data-view-carousel]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.getAttribute('data-view-carousel') || '0', 10);
+        if ((window as any).selectCarouselProduct) {
+          (window as any).selectCarouselProduct(idx);
+        }
+      });
+    });
+  }
+
+  setupCatalogSync();
+  document.addEventListener('astro:page-load', setupCatalogSync);
+</script>
