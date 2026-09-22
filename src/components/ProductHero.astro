@@ -97,7 +97,7 @@ const initialProduct = products[0];
 <section id="producto" class="border-b border-[#E5E7EB] bg-white">
   
   <!-- 1. Carrusel de Extremo a Extremo (Full-Width Edge-to-Edge) -->
-  <div class="w-full relative overflow-hidden bg-[#FBF7EE]/40 border-b border-[#E8D7A8]/50">
+  <div id="carousel-stage" class="w-full relative overflow-hidden bg-[#FBF7EE]/40 border-b border-[#E8D7A8]/50">
     <div class="w-full relative aspect-[4/3] xs:aspect-[16/10] sm:aspect-[16/9] md:aspect-[2.2/1] min-h-[250px] sm:min-h-[360px] max-h-[560px] flex items-center justify-center">
       
       <!-- Top badges over carousel -->
@@ -304,6 +304,7 @@ const initialProduct = products[0];
     const thumbs = document.querySelectorAll('.carousel-thumb');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
+    const stage = document.getElementById('carousel-stage');
 
     // Dynamic product info elements
     const titleEl = document.getElementById('product-title');
@@ -321,6 +322,7 @@ const initialProduct = products[0];
     if (!mainImg || thumbs.length === 0) return;
 
     let currentIndex = 0;
+    let autoplayTimer = null;
 
     function updateCarousel(index) {
       currentIndex = (index + products.length) % products.length;
@@ -369,17 +371,52 @@ const initialProduct = products[0];
       if (discountBadgeEl) discountBadgeEl.textContent = currentProduct.discount;
     }
 
+    // Autoplay every 2.5 seconds (2500ms)
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayTimer = setInterval(() => {
+        updateCarousel(currentIndex + 1);
+      }, 2500);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function restartAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    // Pause on hover or touch so user can inspect details comfortably
+    stage?.addEventListener('mouseenter', stopAutoplay);
+    stage?.addEventListener('mouseleave', startAutoplay);
+    stage?.addEventListener('touchstart', stopAutoplay, { passive: true });
+    stage?.addEventListener('touchend', () => {
+      restartAutoplay();
+    }, { passive: true });
+
     // Thumbnails click
     thumbs.forEach((t) => {
       t.addEventListener('click', () => {
         const idx = parseInt(t.getAttribute('data-index') || '0', 10);
         updateCarousel(idx);
+        restartAutoplay();
       });
     });
 
     // Arrow buttons
-    prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
-    nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
+    prevBtn?.addEventListener('click', () => {
+      updateCarousel(currentIndex - 1);
+      restartAutoplay();
+    });
+    nextBtn?.addEventListener('click', () => {
+      updateCarousel(currentIndex + 1);
+      restartAutoplay();
+    });
 
     // Hook up Buy Now and Add to Cart to CartModal with current active variant
     function getActiveCartItem() {
@@ -408,8 +445,12 @@ const initialProduct = products[0];
     // Expose method to select product from anywhere
     window.selectCarouselProduct = function(idx) {
       updateCarousel(idx);
+      restartAutoplay();
       document.getElementById('producto')?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    // Start 2.5s autoplay on initial load
+    startAutoplay();
   }
 
   setupProductCarousel();
