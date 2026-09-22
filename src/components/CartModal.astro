@@ -7,15 +7,15 @@
   <!-- Backdrop -->
   <div id="cart-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"></div>
 
-  <!-- Slide-over Drawer -->
-  <div class="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-    <div class="w-screen max-w-md bg-white border-l border-[#E5E7EB] shadow-2xl flex flex-col justify-between">
+<!-- Slide-over Drawer -->
+  <div class="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+    <div class="w-screen max-w-full sm:max-w-md bg-white border-l border-[#E5E7EB] shadow-2xl flex flex-col justify-between h-full">
       
       <!-- Drawer Header -->
-      <div class="p-5 sm:p-6 border-b border-[#E5E7EB] flex items-center justify-between bg-[#FAFAFA]">
+      <div class="p-4 sm:p-6 border-b border-[#E5E7EB] flex items-center justify-between bg-[#FAFAFA]">
         <div class="flex items-center gap-2.5">
           <span class="w-2.5 h-2.5 rounded-full bg-[#059669]"></span>
-          <h3 class="font-serif text-xl font-bold text-[#0F172A]">Bolsa de Compras</h3>
+          <h3 class="font-serif text-lg sm:text-xl font-bold text-[#0F172A]">Bolsa de Compras</h3>
           <span id="cart-item-count-badge" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#B8860B] text-white">
             1
           </span>
@@ -23,7 +23,7 @@
         <button
           id="cart-close-btn"
           type="button"
-          class="p-2 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors"
+          class="p-2.5 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors cursor-pointer"
           aria-label="Cerrar bolsa"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,13 +33,13 @@
       </div>
 
       <!-- Free shipping progress banner -->
-      <div class="bg-[#FBF7EE] border-b border-[#E8D7A8] px-5 py-2.5 text-xs text-[#0F172A] flex items-center justify-center gap-1.5 font-medium">
+      <div class="bg-[#FBF7EE] border-b border-[#E8D7A8] px-4 sm:px-5 py-2.5 text-xs text-[#0F172A] flex items-center justify-center gap-1.5 font-medium text-center">
         <span>🚚</span>
         <span>¡Tenés <strong>Envío Gratis</strong> y <strong>Pago Contra Entrega</strong> activados!</span>
       </div>
 
       <!-- Drawer Body: Items + Customer Form (Scrollable) -->
-      <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
+      <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
         
         <!-- Cart Items List -->
         <div>
@@ -68,7 +68,7 @@
               type="text"
               required
               placeholder="Ej. Camila Morales"
-              class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+              class="w-full px-3.5 py-3 sm:py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-base sm:text-sm text-[#0F172A] transition-colors"
             />
           </div>
 
@@ -79,11 +79,11 @@
               type="tel"
               required
               placeholder="Ej. 987 654 321"
-              class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+              class="w-full px-3.5 py-3 sm:py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-base sm:text-sm text-[#0F172A] transition-colors"
             />
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#475569] mb-1">Ciudad / Región *</label>
               <input
@@ -91,7 +91,7 @@
                 type="text"
                 required
                 placeholder="Ej. Lima"
-                class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+                class="w-full px-3.5 py-3 sm:py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-base sm:text-sm text-[#0F172A] transition-colors"
               />
             </div>
             <div>
@@ -101,7 +101,7 @@
                 type="text"
                 required
                 placeholder="Calle, Nro, Dpto"
-                class="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#0F172A] transition-colors"
+                class="w-full px-3.5 py-3 sm:py-2.5 rounded-lg bg-[#F8FAFC] border border-[#CBD5E1] focus:border-[#B8860B] focus:bg-white focus:outline-none text-base sm:text-sm text-[#0F172A] transition-colors"
               />
             </div>
           </div>
@@ -114,14 +114,14 @@
       </div>
 
       <!-- Drawer Footer: Summary & WhatsApp Submit -->
-      <div class="p-5 sm:p-6 border-t border-[#E5E7EB] bg-white space-y-3.5">
+      <div class="p-4 sm:p-6 pb-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:pb-6 border-t border-[#E5E7EB] bg-white space-y-3">
         
-        <div class="space-y-1.5 text-xs">
+        <div class="space-y-1 text-xs">
           <div class="flex justify-between text-[#64748B]">
             <span>Envío a domicilio:</span>
             <span class="text-[#059669] font-bold">GRATIS</span>
           </div>
-          <div class="flex justify-between text-base font-bold text-[#0F172A] pt-2 border-t border-[#E5E7EB]">
+          <div class="flex justify-between text-base font-bold text-[#0F172A] pt-1.5 border-t border-[#E5E7EB]">
             <span>Total a pagar:</span>
             <span id="cart-total-price" class="font-serif text-xl font-extrabold text-[#0F172A]">
               S/. 129.00
@@ -133,7 +133,7 @@
         <button
           id="cart-submit-whatsapp"
           type="button"
-          class="w-full py-3.5 px-5 rounded-xl font-bold text-sm sm:text-base text-white bg-[#059669] hover:bg-[#047857] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+          class="w-full py-4 sm:py-3.5 px-5 rounded-xl font-bold text-sm sm:text-base text-white bg-[#059669] hover:bg-[#047857] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-98"
         >
           <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
@@ -212,13 +212,13 @@
           <span class="text-xs font-bold text-[#059669] block mt-0.5">S/. ${item.price.toFixed(2)}</span>
         </div>
 
-        <div class="flex items-center gap-1.5 border border-[#CBD5E1] rounded-lg bg-white px-1.5 py-0.5 shrink-0">
-          <button type="button" class="cart-minus px-1 text-xs font-bold text-[#64748B] hover:text-[#0F172A]" data-id="${item.id}">-</button>
+        <div class="flex items-center gap-1 border border-[#CBD5E1] rounded-lg bg-[#F8FAFC] p-0.5 shrink-0">
+          <button type="button" class="cart-minus w-7 h-7 flex items-center justify-center text-sm font-bold text-[#475569] hover:text-[#0F172A] hover:bg-white rounded cursor-pointer" data-id="${item.id}">-</button>
           <span class="text-xs font-bold px-1 text-[#0F172A]">${item.qty}</span>
-          <button type="button" class="cart-plus px-1 text-xs font-bold text-[#64748B] hover:text-[#0F172A]" data-id="${item.id}">+</button>
+          <button type="button" class="cart-plus w-7 h-7 flex items-center justify-center text-sm font-bold text-[#475569] hover:text-[#0F172A] hover:bg-white rounded cursor-pointer" data-id="${item.id}">+</button>
         </div>
 
-        <button type="button" class="cart-remove text-[#94A3B8] hover:text-red-500 p-1 text-xs" data-id="${item.id}" title="Eliminar">
+        <button type="button" class="cart-remove text-[#94A3B8] hover:text-red-500 p-2 text-sm shrink-0 cursor-pointer" data-id="${item.id}" title="Eliminar" aria-label="Eliminar ${item.name}">
           ✕
         </button>
       </div>

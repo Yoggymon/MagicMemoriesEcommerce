@@ -38,15 +38,15 @@ const galleryImages = [
   
   <!-- 1. Carrusel de Extremo a Extremo (Full-Width Edge-to-Edge) -->
   <div class="w-full relative overflow-hidden bg-[#FBF7EE]/40 border-b border-[#E8D7A8]/50">
-    <div class="w-full relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.4/1] max-h-[560px] min-h-[340px] flex items-center justify-center">
+    <div class="w-full relative aspect-[4/3] xs:aspect-[16/10] sm:aspect-[16/9] md:aspect-[2.2/1] min-h-[250px] sm:min-h-[360px] max-h-[560px] flex items-center justify-center">
       
       <!-- Top badges over carousel -->
-      <div class="absolute top-4 sm:top-6 left-4 sm:left-8 z-20 flex flex-wrap gap-2">
-        <span class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0F172A] text-white tracking-wider border border-[#B8860B]/40 shadow-xs">
+      <div class="absolute top-3 sm:top-6 left-3 sm:left-8 z-20 flex flex-wrap gap-1.5 sm:gap-2">
+        <span class="px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-[#0F172A] text-white tracking-wider border border-[#B8860B]/40 shadow-xs">
           EDICIÓN EXCLUSIVA 2026
         </span>
-        <span class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#B8860B] text-white tracking-wide shadow-xs">
-          28% DE DESCUENTO HOY
+        <span class="px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-[#B8860B] text-white tracking-wide shadow-xs">
+          28% DE DESCUENTO
         </span>
       </div>
 
@@ -62,10 +62,10 @@ const galleryImages = [
       <button
         id="carousel-prev"
         type="button"
-        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-[#0F172A] shadow-lg flex items-center justify-center border border-[#E5E7EB] transition-all hover:scale-105 active:scale-95 z-20 cursor-pointer"
+        class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-[#0F172A] shadow-md flex items-center justify-center border border-[#E5E7EB] transition-all hover:scale-105 active:scale-95 z-20 cursor-pointer"
         aria-label="Foto anterior"
       >
-        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
@@ -73,20 +73,20 @@ const galleryImages = [
       <button
         id="carousel-next"
         type="button"
-        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-[#0F172A] shadow-lg flex items-center justify-center border border-[#E5E7EB] transition-all hover:scale-105 active:scale-95 z-20 cursor-pointer"
+        class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-[#0F172A] shadow-md flex items-center justify-center border border-[#E5E7EB] transition-all hover:scale-105 active:scale-95 z-20 cursor-pointer"
         aria-label="Foto siguiente"
       >
-        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       <!-- Bottom Caption Bar on Carousel -->
-      <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 right-4 sm:right-8 z-20 flex items-center justify-between pointer-events-none">
-        <span id="carousel-caption" class="bg-white/95 backdrop-blur-xs py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-medium text-[#0F172A] border border-[#E5E7EB] shadow-xs">
+      <div class="absolute bottom-2.5 sm:bottom-4 left-3 sm:left-8 right-3 sm:right-8 z-20 flex items-center justify-between gap-2 pointer-events-none">
+        <span id="carousel-caption" class="bg-white/95 backdrop-blur-xs py-1 px-2.5 sm:py-1.5 sm:px-3.5 rounded-lg text-[10px] sm:text-xs font-medium text-[#0F172A] border border-[#E5E7EB] shadow-xs truncate max-w-[200px] sm:max-w-md">
           {galleryImages[0].tag}
         </span>
-        <span id="carousel-counter" class="bg-[#0F172A]/80 text-white font-mono text-xs py-1.5 px-3 rounded-lg">
+        <span id="carousel-counter" class="bg-[#0F172A]/80 text-white font-mono text-[10px] sm:text-xs py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-lg shrink-0">
           1 / 5
         </span>
       </div>
@@ -94,8 +94,8 @@ const galleryImages = [
     </div>
 
     <!-- Thumbnails Strip Under Carousel -->
-    <div class="max-w-4xl mx-auto px-4 py-3 sm:py-4">
-      <div class="grid grid-cols-5 gap-2 sm:gap-3">
+    <div class="max-w-4xl mx-auto px-2.5 sm:px-4 py-2.5 sm:py-4">
+      <div class="grid grid-cols-5 gap-1.5 sm:gap-3">
         {galleryImages.map((img, idx) => (
           <button
             type="button"
@@ -103,7 +103,7 @@ const galleryImages = [
             data-src={img.src}
             data-alt={img.alt}
             data-tag={img.tag}
-            class={`carousel-thumb relative rounded-xl overflow-hidden border-2 aspect-[16/10] sm:aspect-[16/9] transition-all cursor-pointer ${
+            class={`carousel-thumb relative rounded-lg sm:rounded-xl overflow-hidden border-2 aspect-[16/10] sm:aspect-[16/9] transition-all cursor-pointer ${
               idx === 0
                 ? 'border-[#B8860B] ring-2 ring-[#B8860B]/20 shadow-xs opacity-100'
                 : 'border-[#E5E7EB] opacity-60 hover:opacity-100'
@@ -117,7 +117,7 @@ const galleryImages = [
   </div>
 
   <!-- 2. Información del Producto & Compra Proporcional -->
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
       <!-- Left: Value Details -->
@@ -169,15 +169,15 @@ const galleryImages = [
 
       <!-- Right: Direct Purchase Card -->
       <div class="lg:col-span-5">
-        <div class="rounded-2xl bg-[#FAFAFA] border border-[#E5E7EB] p-5 sm:p-7 shadow-xs">
+        <div class="rounded-2xl bg-[#FAFAFA] border border-[#E5E7EB] p-4.5 sm:p-7 shadow-xs">
           
           <div class="flex items-baseline justify-between mb-4 pb-4 border-b border-[#E5E7EB]">
             <div>
-              <div class="flex items-baseline gap-2.5">
-                <span class="font-serif text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
+              <div class="flex items-baseline gap-2">
+                <span class="font-serif text-2xl sm:text-4xl font-extrabold text-[#0F172A]">
                   S/. 129.00
                 </span>
-                <span class="text-sm line-through text-[#94A3B8] font-medium">
+                <span class="text-xs sm:text-sm line-through text-[#94A3B8] font-medium">
                   S/. 179.00
                 </span>
               </div>
