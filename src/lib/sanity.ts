@@ -12,7 +12,7 @@ export const sanityClient = isSanityConfigured
   ? createClient({
       projectId,
       dataset,
-      useCdn: true,
+      useCdn: false, // false garantiza datos frescos inmediatos sin esperar la caché del CDN
       apiVersion: '2024-01-01',
     })
   : null;
@@ -50,11 +50,13 @@ export async function getProducts(): Promise<Product[]> {
 
     const sanityProducts = await sanityClient.fetch<Product[]>(query);
     if (sanityProducts && sanityProducts.length > 0) {
+      console.log(`[Sanity] Cargados exitosamente ${sanityProducts.length} productos desde Sanity Cloud.`);
       return sanityProducts;
     }
+    console.warn('[Sanity] El dataset está vacío, usando datos fallback.');
     return initialProducts;
   } catch (error) {
-    console.warn('Could not fetch products from Sanity, falling back to initial data:', error);
+    console.warn('[Sanity] Error consultando Sanity, usando datos fallback:', error);
     return initialProducts;
   }
 }
