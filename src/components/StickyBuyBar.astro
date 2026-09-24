@@ -1,12 +1,18 @@
 ---
 // src/components/StickyBuyBar.astro
+import { getProducts } from '../lib/sanity';
+
+const products = await getProducts();
+const initialProduct = products[0];
 ---
 
 <div class="fixed bottom-0 left-0 right-0 z-30 md:hidden bg-white/95 backdrop-blur-md border-t border-[#E5E7EB] px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] shadow-lg flex items-center justify-between gap-3">
   <div>
     <div class="flex items-baseline gap-1.5">
-      <span class="font-serif text-lg font-bold text-[#0F172A]">S/. 129.00</span>
-      <span class="text-xs line-through text-[#94A3B8]">S/. 179</span>
+      <span class="font-serif text-lg font-bold text-[#0F172A]">{initialProduct.price}</span>
+      {initialProduct.regularPrice && (
+        <span class="text-xs line-through text-[#94A3B8]">{initialProduct.regularPrice}</span>
+      )}
     </div>
     <span class="text-[10px] text-[#059669] font-bold block">Envío Gratis Incluido</span>
   </div>
@@ -14,11 +20,11 @@
   <button
     type="button"
     data-add-cart={JSON.stringify({
-      id: "prod-1",
-      name: "Maletín Rose Gold con Espejo LED",
-      price: 129,
+      id: initialProduct.id,
+      name: initialProduct.name,
+      price: initialProduct.numericPrice,
       qty: 1,
-      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
+      image: initialProduct.image
     })}
     class="px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-[#0F172A] hover:bg-[#1E293B] border border-[#B8860B] shadow-sm flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-95 transition-transform"
   >

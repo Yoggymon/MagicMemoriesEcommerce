@@ -1,5 +1,9 @@
 ---
 // src/components/CartModal.astro
+import { getProducts } from '../lib/sanity';
+
+const products = await getProducts();
+const initialProduct = products[0];
 ---
 
 <!-- Cart Drawer / Modal -->
@@ -124,7 +128,7 @@
           <div class="flex justify-between text-base font-bold text-[#0F172A] pt-1.5 border-t border-[#E5E7EB]">
             <span>Total a pagar:</span>
             <span id="cart-total-price" class="font-serif text-xl font-extrabold text-[#0F172A]">
-              S/. 129.00
+              {initialProduct.price}
             </span>
           </div>
         </div>
@@ -151,23 +155,15 @@
   </div>
 </div>
 
-<script>
-  interface CartItem {
-    id: string;
-    name: string;
-    price: number;
-    qty: number;
-    image: string;
-  }
-
-  // Initial cart state
-  let cart: CartItem[] = [
+<script define:vars={{ initialProduct }}>
+  // Initial cart state from Sanity
+  let cart = [
     {
-      id: "prod-1",
-      name: "Maletín Rose Gold con Espejo LED",
-      price: 129,
+      id: initialProduct.id,
+      name: initialProduct.name,
+      price: initialProduct.numericPrice,
       qty: 1,
-      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
+      image: initialProduct.image
     }
   ];
 

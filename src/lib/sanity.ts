@@ -59,7 +59,19 @@ export async function getProducts(): Promise<Product[]> {
     const sanityProducts = await sanityClient.fetch<Product[]>(query);
     if (sanityProducts && sanityProducts.length > 0) {
       console.log(`[Sanity] Cargados exitosamente ${sanityProducts.length} productos desde Sanity Cloud.`);
-      return sanityProducts;
+      return sanityProducts.map(p => {
+        // Si el precio de texto cambió (ej. "S/. 359.00"), asegurar que numericPrice sea 359
+        if (p.price) {
+          const match = p.price.replace(/,/g, '').match(/\d+(\.\d+)?/);
+          if (match) {
+            const parsed = parseFloat(match[0]);
+            if (!isNaN(parsed) && parsed > 0) {
+              return { ...p, numericPrice: parsed };
+            }
+          }
+        }
+        return p;
+      });
     }
     console.warn('[Sanity] El dataset está vacío, usando datos fallback.');
     return initialProducts;
