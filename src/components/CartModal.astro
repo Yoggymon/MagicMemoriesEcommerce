@@ -7,7 +7,17 @@ const initialProduct = products[0];
 ---
 
 <!-- Cart Drawer / Modal -->
-<div id="cart-modal" class="fixed inset-0 z-50 hidden transition-opacity duration-300">
+<div
+  id="cart-modal"
+  class="fixed inset-0 z-50 hidden transition-opacity duration-300"
+  data-initial-item={JSON.stringify({
+    id: initialProduct.id,
+    name: initialProduct.name,
+    price: initialProduct.numericPrice,
+    qty: 1,
+    image: initialProduct.image
+  })}
+>
   <!-- Backdrop -->
   <div id="cart-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"></div>
 
@@ -155,17 +165,25 @@ const initialProduct = products[0];
   </div>
 </div>
 
-<script define:vars={{ initialProduct }}>
-  // Initial cart state from Sanity
-  let cart = [
-    {
-      id: initialProduct.id,
-      name: initialProduct.name,
-      price: initialProduct.numericPrice,
-      qty: 1,
-      image: initialProduct.image
-    }
-  ];
+<script>
+  interface CartItem {
+    id: string;
+    name: string;
+    price: number;
+    qty: number;
+    image: string;
+  }
+
+  const modalEl = document.getElementById('cart-modal');
+  let initialCartItem: CartItem | null = null;
+  try {
+    initialCartItem = JSON.parse(modalEl?.getAttribute('data-initial-item') || 'null');
+  } catch {
+    initialCartItem = null;
+  }
+
+  // Initial cart state
+  let cart: CartItem[] = initialCartItem && initialCartItem.id ? [initialCartItem] : [];
 
   function getCartTotal(): number {
     return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
