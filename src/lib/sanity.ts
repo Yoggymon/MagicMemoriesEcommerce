@@ -3,8 +3,16 @@ import { createImageUrlBuilder } from '@sanity/image-url';
 import type { Product } from '../types/product';
 import { initialProducts } from '../data/products';
 
-const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
-const dataset = import.meta.env.PUBLIC_SANITY_DATASET || 'production';
+const projectId =
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID ||
+  import.meta.env.SANITY_PROJECT_ID ||
+  (typeof process !== 'undefined' && (process.env?.PUBLIC_SANITY_PROJECT_ID || process.env?.SANITY_PROJECT_ID));
+
+const dataset =
+  import.meta.env.PUBLIC_SANITY_DATASET ||
+  import.meta.env.SANITY_DATASET ||
+  (typeof process !== 'undefined' && (process.env?.PUBLIC_SANITY_DATASET || process.env?.SANITY_DATASET)) ||
+  'production';
 
 export const isSanityConfigured = Boolean(projectId && projectId !== 'your_project_id');
 
